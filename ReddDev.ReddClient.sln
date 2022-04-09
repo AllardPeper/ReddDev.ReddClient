@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReddDev.ReddClient", "ReddDev.ReddClient\ReddDev.ReddClient.csproj", "{1B1A1887-59E6-4E30-8443-C7B5171E9538}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReddDev.ReddConsole", "ReddDev.ReddConsole\ReddDev.ReddConsole.csproj", "{B8D44BE6-0C04-4733-9B8A-60E73166A94A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReddDev.ReddWPF", "ReddDev.ReddWPF\ReddDev.ReddWPF.csproj", "{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B1A1887-59E6-4E30-8443-C7B5171E9538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1A1887-59E6-4E30-8443-C7B5171E9538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1A1887-59E6-4E30-8443-C7B5171E9538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1A1887-59E6-4E30-8443-C7B5171E9538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D44BE6-0C04-4733-9B8A-60E73166A94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D44BE6-0C04-4733-9B8A-60E73166A94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D44BE6-0C04-4733-9B8A-60E73166A94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D44BE6-0C04-4733-9B8A-60E73166A94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42EAF828-E15E-4C18-9CFD-6BFFEB406493}
+	EndGlobalSection
+EndGlobal

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReddDev.ReddConsole", "Redd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReddDev.ReddWPF", "ReddDev.ReddWPF\ReddDev.ReddWPF.csproj", "{01F420E6-E43F-4FF6-9CEC-9C6EDFA37606}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redd", "Redd", "{8E5C0F7C-0F26-4014-8062-88A4C8FA9345}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B1A1887-59E6-4E30-8443-C7B5171E9538} = {8E5C0F7C-0F26-4014-8062-88A4C8FA9345}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {42EAF828-E15E-4C18-9CFD-6BFFEB406493}

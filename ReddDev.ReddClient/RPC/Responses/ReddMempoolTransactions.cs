@@ -5,31 +5,27 @@
 // It takes time and effort to produce high standard code like this,
 // consider donating RDD to Rm3QzToPurkULhKX3WxLr6CGnsicTq5CWQ to support the project
 // *******************************************************************************************************************************
-namespace ReddDev.ReddClient.RPC {
+using Newtonsoft.Json;
+
+namespace ReddDev.ReddClient.RPC.Responses {
 
   /// <summary>
-  /// Methods
+  /// Transaction list and mempool sequence number
   /// </summary>
-  internal enum ReddMethods {
-    Unknown,
-    GetBestBlockHash,
-    GetBlock,
-    GetBlockChainInfo,
-    GetBlockCount,
-    GetBlockFilter,
-    GetBlockHash,
-    GetBlockHeader,
-    GetBlockStats,
-    GetChainTips,
-    GetChainTxStats,
-    GetDifficulty,
-    GetMempoolAncestors,
-    GetMempoolDescendants,
-    GetMempoolEntry,
-    GetMempoolInfo,
-    GetRawMempool,
-    GetTxOut,
-    GetTxoutProof,
-    GetTxOutSetInfo,
+  public class ReddMempoolTransactions {
+
+    /// <summary>
+    /// [string[]] True if the mempool is fully loaded
+    /// </summary>
+    [JsonProperty(PropertyName = "txids")]
+    public List<String> TransactionIds { get; set; }
+
+    /// <summary>
+    /// [uint64_t] True if the mempool is fully loaded
+    /// </summary>
+    [JsonProperty(PropertyName = "mempool_sequence")]
+    public Int64 MempoolSequence { get; set; }
+
   }
+
 }

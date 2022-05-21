@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿// *******************************************************************************************************************************
+// Copyright (c) 2022 Allard Peper aka Dragon Ace
+// See the accompanying License.txt file or http://www.opensource.org/licenses/mit-license.php for the Software License Aggrement.
+// 
+// It takes time and effort to produce high standard code like this,
+// consider donating RDD to Rm3QzToPurkULhKX3WxLr6CGnsicTq5CWQ to support the project
+// *******************************************************************************************************************************
 using ReddDev.ReddClient.RPC.Data;
 
 namespace ReddDev.ReddClient.RPC.Responses {
 
   /// <summary>
-  /// returns an Object with information about block <hash>.
+  /// Reddcoin Block with transactions
+  /// Counterpart of the CTransaction in the wallet
   /// </summary>
-  public class ReddBlockTransactions :ReddBlockBase {
-
-    [JsonProperty(PropertyName = "tx")]
-    public List<ReddBlockTransaction> Tx { get; set; }
-
+  public class ReddBlockTransactions: ReddBlockBase<ReddTransaction> {
   }
 }

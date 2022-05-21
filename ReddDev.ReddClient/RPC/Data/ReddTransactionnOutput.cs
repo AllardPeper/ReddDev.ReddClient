@@ -7,31 +7,34 @@
 // *******************************************************************************************************************************
 using Newtonsoft.Json;
 
-namespace ReddDev.ReddClient.RPC.Responses {
+namespace ReddDev.ReddClient.RPC.Data {
 
   /// <summary>
-  /// General response class for all RPC calls
+  /// [CTxOut] An output of a transaction,
+  /// It contains the public key that the next input must be able to sign with to claim it.
   /// </summary>
-  /// <typeparam name="T">Expected return type, in case of error this will be null</typeparam>
-  public class ReddResponse<T> {
+  public class ReddTransactionnOutput {
 
     /// <summary>
-    /// Expected result of type <T>
+    /// [CAmount] Value 
+    /// CAmount is formatted as [-][int64_t].[int64_t] 
+    /// where quotient = amount / 100000000
+    /// and remainder = amount % 100000000
     /// </summary>
-    [JsonProperty(PropertyName = "result", Order = 0)]
-    public T Result { get; set; }
+    [JsonProperty(PropertyName = "value")]
+    public Decimal Value { get; set; }
 
     /// <summary>
-    /// Id of the transaction
+    /// [int64_t] Index
     /// </summary>
-    [JsonProperty(PropertyName = "id", Order = 1)]
-    public Int32? Id { get; set; }
+    [JsonProperty(PropertyName = "n")]
+    public Int64 Index { get; set; }
 
     /// <summary>
-    // Error object in case of error or null when no error occurred
+    /// [CScript] CScript public key
     /// </summary>
-    [JsonProperty(PropertyName = "error", Order = 2)]
-    public ReddError Error { get; set; }
+    [JsonProperty(PropertyName = "scriptPubKey")]
+    public ReddCScriptPublicKey CScriptPublicKey { get; set; }
 
   }
 

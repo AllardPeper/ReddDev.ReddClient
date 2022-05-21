@@ -7,31 +7,37 @@
 // *******************************************************************************************************************************
 using Newtonsoft.Json;
 
-namespace ReddDev.ReddClient.RPC.Responses {
-
+namespace ReddDev.ReddClient.RPC.Data {
+  
   /// <summary>
-  /// General response class for all RPC calls
+  /// Taproot
   /// </summary>
-  /// <typeparam name="T">Expected return type, in case of error this will be null</typeparam>
-  public class ReddResponse<T> {
+  public class ReddSoftFork {
 
     /// <summary>
-    /// Expected result of type <T>
+    /// [string] burried or bip9
     /// </summary>
-    [JsonProperty(PropertyName = "result", Order = 0)]
-    public T Result { get; set; }
+    [JsonProperty(PropertyName = "type")]
+    public String Type { get; set; }
 
     /// <summary>
-    /// Id of the transaction
+    /// [bool] True if the rules are enforced for the mempool and the next block
     /// </summary>
-    [JsonProperty(PropertyName = "id", Order = 1)]
-    public Int32? Id { get; set; }
+    [JsonProperty(PropertyName = "active")]
+    public Boolean Active { get; set; }
 
     /// <summary>
-    // Error object in case of error or null when no error occurred
+    /// [int] Height of the first block which the rules are or will be enforced (only for "buried" type, or "bip9" type
     /// </summary>
-    [JsonProperty(PropertyName = "error", Order = 2)]
-    public ReddError Error { get; set; }
+    [JsonProperty(PropertyName = "height")]
+    public Int32 height { get; set; }
+
+    /// <summary>
+    /// [UniValue] Bitcoin Improvement Proposal 9
+    /// Soft Fork Activation
+    /// </summary>
+    [JsonProperty(PropertyName = "bip9")]
+    public ReddBIP9 Bip9 { get; set; }
 
   }
 

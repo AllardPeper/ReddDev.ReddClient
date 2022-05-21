@@ -7,31 +7,36 @@
 // *******************************************************************************************************************************
 using Newtonsoft.Json;
 
-namespace ReddDev.ReddClient.RPC.Responses {
-
+namespace ReddDev.ReddClient.RPC.Data {
+  
   /// <summary>
-  /// General response class for all RPC calls
+  /// Fees
   /// </summary>
-  /// <typeparam name="T">Expected return type, in case of error this will be null</typeparam>
-  public class ReddResponse<T> {
+  public class ReddFees {
 
     /// <summary>
-    /// Expected result of type <T>
+    /// [CAmount] Transaction fee in RDD
     /// </summary>
-    [JsonProperty(PropertyName = "result", Order = 0)]
-    public T Result { get; set; }
+    [JsonProperty(PropertyName = "base")]
+    public Decimal Base { get; set; }
 
     /// <summary>
-    /// Id of the transaction
+    /// [CAmount] Transaction fee with fee deltas used for mining priority in RDD
     /// </summary>
-    [JsonProperty(PropertyName = "id", Order = 1)]
-    public Int32? Id { get; set; }
+    [JsonProperty(PropertyName = "modified")]
+    public Decimal Modified { get; set; }
 
     /// <summary>
-    // Error object in case of error or null when no error occurred
+    /// [CAmount] Modified fees (see above) of in-mempool ancestors (including this one) in RDD
     /// </summary>
-    [JsonProperty(PropertyName = "error", Order = 2)]
-    public ReddError Error { get; set; }
+    [JsonProperty(PropertyName = "ancestor")]
+    public Decimal Ancestor { get; set; }
+
+    /// <summary>
+    /// [CAmount] Modified fees (see above) of in-mempool descendants (including this one) in RDD
+    /// </summary>
+    [JsonProperty(PropertyName = "descendant")]
+    public Decimal Descendant { get; set; }
 
   }
 

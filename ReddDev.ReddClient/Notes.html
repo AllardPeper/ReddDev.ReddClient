@@ -1,0 +1,53 @@
+﻿<html>
+	<head>
+		<style>
+			#dark {
+			  color: black;
+			  background-color: GhostWhite;
+			  border: 10px solid currentcolor;
+			  padding-left: 12px;
+			}
+			code{
+			  background-color: Yellow;
+			}
+		</style>
+	</head>
+<body>
+	<h1>Issues and general notes compiled when implementing ReddClient</h1>
+	<article id="dark">
+	<p>
+		1) <b>getblock</b> with verbosity 2 returns error for some blockHashes<br>
+		<br>
+		For example "0e61c7c6d2a816a48c131fc8d7f7dd31a507d0d2335d99680ef3d075f01079c5" (best block) returned an internal error<br>
+		<br>
+		<code>getblock "0e61c7c6d2a816a48c131fc8d7f7dd31a507d0d2335d99680ef3d075f01079c5" 2</code>
+		<br>
+		<br>
+		<i>
+			core_write.cpp:264 (TxToUniv)<br>
+			Internal bug detected: 'MoneyRange(fee)'<br>
+			You may report this issue here: https://github.com/reddcoin-project/reddcoin/issues<br>
+			 (code -1)
+		</i>
+	</p>
+	</article>
+	<article id="dark">
+	<p>
+		2) <b>getblock</b> with verbosity 2 returns more data then shown in help<br>
+		<br>
+		type, hashproof, entropybit, modifier and blocksignature is also returned<br>
+		<br>
+		<code>getblock "4deae5afe5b5e57a96d7e9aae563fedcf67065af5cc5e86db04d05c6a86a134f" 2</code>
+	</p>
+	</article>
+	<article id="dark">
+	<p>
+		3) <b>getblockfilter</b> does not work<br>
+		<br>
+		<code>getblockfilter "0e61c7c6d2a816a48c131fc8d7f7dd31a507d0d2335d99680ef3d075f01079c5"</code><br>
+		<br>
+		Index is not enabled for filtertype basic (code -1)<br>
+		</p>
+	</article>
+</body>
+</html>

@@ -6,49 +6,48 @@
 // consider donating RDD to Rm3QzToPurkULhKX3WxLr6CGnsicTq5CWQ to support the project
 // *******************************************************************************************************************************
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ReddDev.ReddClient.RPC.Data {
 
   /// <summary>
-  /// CScript object as Assembly string representation and its hash
+  /// CScript public key
   /// </summary>
-  public class ReddScriptSig {
+  public class ReddCScriptPublicKey {
 
     /// <summary>
     /// [string] Assembly string representation of a CScript object
     /// </summary>
     [JsonProperty(PropertyName = "asm")]
-    public String CScript { get; set; }
-
+    public String Asm { get; set; }
+    
     /// <summary>
-    /// [string] Hex string for the CScript
+    /// [string] Hash of the CStript object (optional)
     /// </summary>
     [JsonProperty(PropertyName = "hex")]
     public String Hex { get; set; }
 
     /// <summary>
-    /// [string] The type, eg pubkeyhash
+    /// [string] Transaction output type
+    /// "nonstandard", "pubkey", "pubkeyhash", "scripthash", "multisig", "nulldata", "witness_v0_keyhash", 
+    /// "witness_v0_scripthash", "witness_v1_taproot", "witness_unknown";
     /// </summary>
     [JsonProperty(PropertyName = "type")]
     public String Type { get; set; }
 
     /// <summary>
-    /// [string] Reddcoin address (only if a well-defined address exists)
+    /// DEPRECATED
+    /// [string[]] Encoded CTxDestination objects
     /// </summary>
-    [JsonProperty(PropertyName = "address")]
-    public String Address { get; set; }
+    [JsonProperty(PropertyName = "addresses")]
+    public List<String> Addresses { get; set; }
 
-    ///// <summary>
-    ///// [sting[]] (DEPRECATED, returned only if config option -deprecatedrpc=addresses is passed) Array of reddcoin addresses
-    ///// </summary>
-    //[JsonProperty(PropertyName = "addresses")]
-    //public List<String> Addresses { get; set; }
-
-    ///// <summary>
-    ///// [int] (DEPRECATED, returned only if config option -deprecatedrpc=addresses is passed) Number of required signatures
-    ///// </summary>
-    //[JsonProperty(PropertyName = "reqSigs")]
-    //public Int32 ReqSigs { get; set; }
+    /// <summary>
+    /// DEPRECATED
+    /// [int] reqSigs
+    /// </summary>
+    [JsonProperty(PropertyName = "reqSigs")]
+    public Int32 ReqSigs { get; set; }
 
   }
 

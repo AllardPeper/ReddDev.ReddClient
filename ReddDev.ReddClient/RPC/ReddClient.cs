@@ -1,4 +1,11 @@
-﻿using System.Net.Http.Headers;
+﻿// *******************************************************************************************************************************
+// Copyright (c) 2022 Allard Peper aka Dragon Ace
+// See the accompanying License.txt file or http://www.opensource.org/licenses/mit-license.php for the Software License Aggrement.
+// 
+// It takes time and effort to produce high standard code like this,
+// consider donating RDD to Rm3QzToPurkULhKX3WxLr6CGnsicTq5CWQ to support the project
+// *******************************************************************************************************************************
+using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using ReddDev.ReddClient.RPC.Responses;
@@ -8,7 +15,7 @@ namespace ReddDev.ReddClient.RPC {
   /// <summary>
   /// ReddClient for communicating with the ReddWallet RPC deamon
   /// </summary>
-  public partial class ReddClient: IDisposable {
+  public partial class ReddClient :IDisposable {
 
     private HttpClient m_Client;
     private Boolean m_DisposedValue;
@@ -42,14 +49,28 @@ namespace ReddDev.ReddClient.RPC {
     /// <param name="method">Method to call from the ReddMethods enum</param>
     /// <param name="parameters">Optional parameters</param>
     /// <returns>TResponse</returns>
-    private async Task<TResponse> PostAsync<TResponse> (ReddMethods method, params Object[] parameters) {
-      ReddRequest request = new ReddRequest(1, method, parameters);
-      String jsonRequest = JsonConvert.SerializeObject(request);
-      StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-rpc");
-      HttpResponseMessage responseMessage = await m_Client.PostAsync(m_RPCUrl, content);
-      String jsonResponse = await responseMessage.Content.ReadAsStringAsync();
-      ReddResponse<TResponse> response = JsonConvert.DeserializeObject<ReddResponse<TResponse>>(jsonResponse)!;
-      return response.Result;
+    private async Task<ReddResponse<TResponse>> PostAsync<TResponse> (ReddMethods method, params Object[] parameters) {
+      try {
+        ReddRequest request = new ReddRequest(1, method, parameters);
+        String jsonRequest = JsonConvert.SerializeObject(request);
+        StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-rpc");
+        HttpResponseMessage responseMessage = await m_Client.PostAsync(m_RPCUrl, content);
+        String jsonResponse = await responseMessage.Content.ReadAsStringAsync();
+        ReddResponse<TResponse> response = JsonConvert.DeserializeObject<ReddResponse<TResponse>>(jsonResponse);
+        return response;
+      } catch (JsonException e) {
+        ReddResponse<TResponse> errorResponse = new ReddResponse<TResponse>();
+        errorResponse.Error = new ReddError();
+        errorResponse.Error.Message = e.Message;
+        errorResponse.Error.Code = ReddErrorCodes.RPC_REDDDEV_JSON_EXCEPTION;
+        return errorResponse;
+      } catch (Exception e) {
+        ReddResponse<TResponse> errorResponse = new ReddResponse<TResponse>();
+        errorResponse.Error = new ReddError();
+        errorResponse.Error.Message = e.Message;
+        errorResponse.Error.Code = ReddErrorCodes.RPC_REDDDEV_CANNOT_CONNECT;
+        return errorResponse;
+      }
     }
 
     /// <summary>

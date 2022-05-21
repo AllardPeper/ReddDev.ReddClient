@@ -6,30 +6,24 @@
 // consider donating RDD to Rm3QzToPurkULhKX3WxLr6CGnsicTq5CWQ to support the project
 // *******************************************************************************************************************************
 namespace ReddDev.ReddClient.RPC {
-
+  
   /// <summary>
-  /// Methods
+  /// Hash type
   /// </summary>
-  internal enum ReddMethods {
-    Unknown,
-    GetBestBlockHash,
-    GetBlock,
-    GetBlockChainInfo,
-    GetBlockCount,
-    GetBlockFilter,
-    GetBlockHash,
-    GetBlockHeader,
-    GetBlockStats,
-    GetChainTips,
-    GetChainTxStats,
-    GetDifficulty,
-    GetMempoolAncestors,
-    GetMempoolDescendants,
-    GetMempoolEntry,
-    GetMempoolInfo,
-    GetRawMempool,
-    GetTxOut,
-    GetTxoutProof,
-    GetTxOutSetInfo,
+  public enum ReddHashType {
+    /// <summary>
+    /// hash_serialized_2
+    /// the legacy algorithm
+    /// </summary>
+    Hash_Serialized_2,
+    /// <summary>
+    /// muhash
+    /// </summary>
+    MuHash,
+    /// <summary>
+    /// none
+    /// </summary>
+    None
   }
+
 }
